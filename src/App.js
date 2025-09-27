@@ -1,13 +1,27 @@
 import './App.css' 
-import Header from './components/Header'
+import { useState } from 'react';
+import Employee from './Employee';
+
 
 function App() {
-  const data = 'shefin'
+  const [count, setCount] = useState(0)
+  const addCount = () => {
+    setCount( count + 1 )
+  }
+  let employ = [
+    { name: 'shefin', age: 24},
+    { name: 'steve', age: 54},
+    { name: 'Musk', age: 44}
+  ]
+
   return (
-    <div>
-      <h1 className='hello'>Hello world</h1>
-      <Header data ={data}/>
-      <p>This is sample description { data}</p>
+    <div className='App'>
+      <button onClick={addCount}>Add</button>
+        {employ.map((obj, index) => {
+          return (
+            <Employee key={index} {...obj}/>
+          )
+        })}
     </div>
   );
 }
@@ -15,6 +29,4 @@ function App() {
 export default App;
 
 
-function Hello(){
-  return <h1 className='hello'> Hello </h1>
-}
+ 
